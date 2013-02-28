@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>我们的照片页（基本作业DEMO）</title>
+    <link rel="stylesheet" type="text/css" href="./static/common.css">
+    <link rel="stylesheet" type="text/css" href="./static/show-photo.css">
+</head>
+<body>
+<!-- 头部 -->
+<div class="header" id="header">
+    <div class="userbar" id="userbar">
+        <div class="info">
+            <span class="date"><em id="show-date-tip"></em></span>
+            <span class="browser">欢迎<em id="show-browser"></em>用户访问</span>
+        </div>
+    </div>
+    <div class="banner" id="banner">
+        <a class="logo" href="#" title="back HOME">home</a>
+    </div>
+    <div class="search-box" id="search-box">
+        <form id="search-form" action="http://www.baidu.com/s" target="_blank">
+            <input class="search-input" id="search-filed-word" name="word" />
+            <input class="search-button" type="submit" value="百度一下" />
+            <input type="hidden" name="ie" value="utf-8" />
+        </form>
+    </div>
+</div>
+<!-- 主体 -->
+<div class="body" id="body">
+    <div class="nav">
+        <ul class="tab clearfix" id="nav-photo-tab">
+            <li class="item current " data-dataName="animals">xx拍的动物</li>
+            <li class="item" data-dataName="scene">xx去青岛</li>
+            <li class="item" data-dataName="food">xx美食日记</li>
+        </ul>
+    </div>
+    <div class="pic-wrapper clearfix">
+        <div class="img-detail">
+            <div class="img-view" id="imgView" style="height: 715px;">
+                <div class="img-show" id="imgContainer" style="height: 642px;">
+                    <div id="showPrev" class="img-show_prev" style="height: 321px;">
+                        <div class="arrow-prev"></div>
+                    </div>
+                    <div id="showNext" class="img-show_next" style="height: 321px;">
+                        <div class="arrow-next"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="img-album" id="imgAlbum">
+                <div class="img-album_prev disabled" id="slidePrev">
+                    <div class="slide_prev">prev</div>
+                </div>
+                <div class="img-album_slide">
+                    <ul class="img-list" id="imgList"></ul>
+                </div>
+                <div class="img-album_next" id="slideNext">
+                    <div class="slide_next">next</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--尾部-->
+<div class="footer">
+    <dl>
+        <dt>制作团队</dt>
+        <dd>
+            <p>资料收集：ne1,ne2; 图像处理：ne3; 布局设计: ne4,ne5;编码:nexxx</p>
+        </dd>
+    </dl>
+    <p class="help-info"> &copy;<em id="page-date">2013 </em> CopyLeft <a href="#">关于DEMO</a></p>
+</div>
+<script src="./static/tangram2.0.2.1.js"></script>
+<script src="./static/common.js"></script>
+<script src="./static/show-photo.m.js"></script>
+<script src="./static/show-photo.v.js"></script>
+<script src="./static/show-photo.c.js"></script>
+<script>
+    window.conf || (window.conf = {});
+    conf.album = {
+        urlPrefix: '',
+        slideLength: 6,
+        slideOffset: 1,
+        slideSize: 84,
+        clickZoomRate: 0.25,
+        scrollSpeed: 50,
+        slideItemTpl: '<li id="pn_#{pn}"><img src="#{thumbnail_url}" alt="#{pn}" /></li>',
+        slideImgTpl: '<img src="#{thumbnail_url}" alt="#{pn}" name="#{pn}" />'
+    };
+    baidu(function(){
+        //将浏览器信息显示到顶栏
+        updateBrowerInfo();
+        //初始化搜索表单交互
+        initSearchForm();
+        //初始化大图浏览及相关的交互效果
+        Gl.controller.init({'urlPrefix':'./data/'});
+    });
+</script>
+</body>
+</html>
