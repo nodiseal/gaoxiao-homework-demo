@@ -1,7 +1,5 @@
 /* image detail */
 
-
-
 /**
  * 初始化Tab的交互
  */
